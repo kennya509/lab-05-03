@@ -1,0 +1,9 @@
+{
+  "name": "lab-05-03",
+  "version": "1.0.0",
+  "description": "GitHub Actions Lab",
+  "scripts": {
+    "test": "echo \"Tests passed\" && exit 0",
+    "build": "echo \"Build complete\""
+  }
+}
