@@ -1,0 +1,25 @@
+name: Hello World Training Workflow
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  greet-and-list:
+    runs-on: ubuntu-latest
+    env:
+      MY_ENV: "Hello from nikita-verbytskiy"
+    steps:
+      - name: Greet the User
+        run: echo "Hello World!"
+      - name: List before checkout
+        run: ls -l
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: List after checkout
+        run: ls -l
+      - name: Run a multi-line script
+        run: |
+          echo "Value of MY_ENV: $MY_ENV"
+          echo "Value of GITHUB_ACTOR: $GITHUB_ACTOR"
