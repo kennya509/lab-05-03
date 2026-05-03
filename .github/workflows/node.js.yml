@@ -20,3 +20,17 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - run: npm test
+
+  package-and-publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t lab-05-03:latest .
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Push Docker image
+        run: |
+          docker tag lab-05-03:latest ghcr.io/${{ github.repository_owner }}/lab-05-03:latest
+          docker push ghcr.io/${{ github.repository_owner }}/lab-05-03:latest
