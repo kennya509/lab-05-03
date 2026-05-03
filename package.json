@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "GitHub Actions Lab",
   "scripts": {
-    "test": "echo \"Tests passed\" && exit 0",
+    "test": "node test.js",
     "build": "echo \"Build complete\""
   }
 }
